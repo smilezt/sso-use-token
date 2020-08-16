@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用户系统</title>
+
+</head>
+<div id="top">
+    <h2>hi,欢迎来到用户系统</h2>
+    <h3 th:text="${userName}"></h3>
+    <div id="topTags">
+        <ul>
+            <a href="http://www.xiaozhao.com:8090/xiaozhao/wel">前往主系统</a>
+            <br>
+            <a href="http://www.user.com:8081/logout?url=www.user.com:8081/user/wel">注销</a>
+        </ul>
+
+    </div>
+</div>
+</body>
+</html>
