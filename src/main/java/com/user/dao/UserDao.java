@@ -11,7 +11,17 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserDao {
 
+    /**
+     * 根据username查询user信息
+     * @param userName
+     * @return
+     */
     User query(String userName);
 
+    /**
+     * 根据userId查询user信息
+     * @param userId
+     * @return
+     */
     User queryById(Long userId);
 }

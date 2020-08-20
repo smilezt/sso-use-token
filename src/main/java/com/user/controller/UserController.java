@@ -16,6 +16,13 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     @Autowired
     UserService userService;
+
+    /**
+     * user系统入口
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("/wel")
     public String wel(HttpServletRequest request, Model model){
         HttpSession session = request.getSession(false);
@@ -23,7 +30,7 @@ public class UserController {
         long useId = JwtUtil.getAppUID(token);
         System.out.println("**********************************"+useId);
         User user = userService.queryById(useId);
-        System.out.println("**********************************"+useId);
+        //传回username
         model.addAttribute("userName",user.getUserName());
         return "wel";
     }

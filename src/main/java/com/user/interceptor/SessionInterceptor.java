@@ -13,10 +13,12 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
         String token=null;
         HttpSession session = request.getSession(false);
         token = request.getParameter("token");
+        //局部session中有token
         if(token==null && session != null && session.getAttribute("token") != null){
             token = (String)session.getAttribute("token");
         }
         System.out.println(token);
+        //验证token
         if (token != null) {
             String reqUrl = "http://www.xiaozhao.com:8090/checkToken";
             String content = "token=" + token;
@@ -27,7 +29,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
                 return true;
             }
         }
-        //表示当你需要访问某个user.com下面的保护资源时，既没有session会话信息，又没有其他系统已经登录过的token信息的，sso.com认证
+        //表示当你需要访问某个user.com下面的保护资源时，既没有token信息，又没有其他系统已经登录过的token信息，sso.com认证
         response.sendRedirect("http://www.xiaozhao.com:8090/preLogin?url=www.user.com:8081/user/wel");
         return false;
     }
